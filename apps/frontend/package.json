@@ -1,0 +1,47 @@
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "clean": "rm -rf .next",
+    "dev": "next dev -p 3000",
+    "lint": "next lint",
+    "start": "next start "
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.68.3",
+    "@react-three/fiber": "^8.13.0",
+    "@types/three": "^0.152.0",
+    "autoprefixer": "^10.4.14",
+    "file-loader": "^6.2.0",
+    "logger": "*",
+    "next": "latest",
+    "next-transpile-modules": "^10.0.0",
+    "postcss": "^8.4.23",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.62.1",
+    "styled-components": "^6.0.0-rc.1",
+    "tailwindcss": "^3.3.2",
+    "three": "^0.152.2",
+    "three-stdlib": "^2.21.11",
+    "ts-pattern": "^4.3.0",
+    "ui": "*",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.22",
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.14",
+    "eslint-config-custom": "*",
+    "postcss": "^8.4.23",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "tailwindcss": "^3.3.2",
+    "tsconfig": "*",
+    "typescript": "^4.8.3"
+  }
+}

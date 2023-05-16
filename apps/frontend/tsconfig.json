@@ -1,0 +1,26 @@
+{
+  "exclude": ["node_modules"],
+  "extends": "tsconfig/nextjs.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "noEmit": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "",
+    "paths": {
+      "@/*": ["src/*"],
+      "@modules/*": ["src/modules/*"],
+      "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@styles/*": ["src/styles/*"]
+    }
+  },
+  "include": ["src", "next-env.d.ts"]
+}
