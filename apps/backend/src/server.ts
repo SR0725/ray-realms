@@ -1,22 +1,19 @@
-import { json, urlencoded } from "body-parser";
-import express from "express";
-import morgan from "morgan";
-import cors from "cors";
+import { Server } from "socket.io";
+import { createServer } from "http";
+import { log } from "logger";
 
-export const createServer = () => {
-  const app = express();
-  app
-    .disable("x-powered-by")
-    .use(morgan("dev"))
-    .use(urlencoded({ extended: true }))
-    .use(json())
-    .use(cors())
-    .get("/message/:name", (req, res) => {
-      return res.json({ message: `hello ${req.params.name}` });
-    })
-    .get("/healthz", (req, res) => {
-      return res.json({ ok: true });
-    });
+const port = Number(process.env.BACKEND_PORT) || 6000;
 
-  return app;
-};
+const httpServer = createServer();
+
+const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+const io = new Server(httpServer, {
+  cors: {
+    origin: frontendUrl,
+  },
+});
+
+httpServer.listen(port, () => {
+  log(`Listening to port ${port}`);
+});
+export default io;

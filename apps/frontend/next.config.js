@@ -2,6 +2,7 @@ const withTM = require("next-transpile-modules")(["ui"]);
 
 module.exports = withTM({
   reactStrictMode: true,
+  transpilePackages: ["models"],
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.glb$/,

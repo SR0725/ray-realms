@@ -1,6 +1,8 @@
 {
   "exclude": ["node_modules"],
   "extends": "tsconfig/nextjs.json",
+  "module": "commonjs",
+  "skipLibCheck": true,
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",

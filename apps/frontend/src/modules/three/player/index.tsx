@@ -1,9 +1,17 @@
-import React, { useRef, useState, FC, MutableRefObject } from "react";
+import React, {
+  useRef,
+  useState,
+  FC,
+  MutableRefObject,
+  useEffect,
+} from "react";
 import { Model, ActionName } from "./Model";
 import { Euler, useFrame, Vector3 } from "@react-three/fiber";
 import { CameraControls } from "@react-three/drei";
 import usePersonControls from "@/utils/usePersonControls";
 import useAnimationFrame from "@/hooks/useAnimationFrame";
+import { socket } from "@/utils/socket";
+import { Player } from "models";
 
 export const useAnimation = (x: number, y: number) => {
   const delay = 0.7;
@@ -144,6 +152,17 @@ const GameObject: FC<Props> = ({ CameraControlRef }) => {
   } = useAnimation(position[0], position[2]);
 
   useCamaeraControl(CameraControlRef, isPlaying, position);
+
+  useEffect(() => {
+    const newPlayer: Player = {
+      id: socket.id,
+      name: "test",
+      position: position as [number, number, number],
+      rotation: rotation as [number, number, number],
+      playAnimation: playAnimation as ActionName,
+    };
+    socket.emit("player:join", newPlayer);
+  }, []);
 
   return (
     <Model

@@ -1,9 +1,7 @@
-import { createServer } from "./server";
-import { log } from "logger";
+import io from "./server";
+import onConnection from "./routes";
 
-const port = process.env.BACKEND_PORT || 6000;
-const server = createServer();
+// middleware
 
-server.listen(port, () => {
-  log(`api running on ${port}`);
-});
+// routes
+io.on("connection", onConnection);
