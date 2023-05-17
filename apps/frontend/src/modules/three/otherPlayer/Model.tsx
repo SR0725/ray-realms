@@ -38,7 +38,6 @@ export function Model(props: Props) {
   const { nodes } = useGraph(copiedScene) as GLTFResult;
   const { ref, actions, mixer, names } = useAnimations(animations);
   const [lastAction, setLastAction] = useState<ActionName>("idle");
-  console.log(actions, names);
 
   useEffect(() => {
     if (playAnimation && actions[lastAction]) {
