@@ -164,6 +164,17 @@ const GameObject: FC<Props> = ({ CameraControlRef }) => {
     socket.emit("player:join", newPlayer);
   }, []);
 
+  useFrame(() => {
+    const newPlayer: Player = {
+      id: socket.id,
+      name: "test",
+      position: position as [number, number, number],
+      rotation: rotation as [number, number, number],
+      playAnimation: playAnimation as ActionName,
+    };
+    socket.emit("player:updateState", newPlayer);
+  });
+
   return (
     <Model
       position={isPlaying ? startingPosition : (position as Vector3)}

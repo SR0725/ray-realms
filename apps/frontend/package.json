@@ -16,6 +16,7 @@
     "autoprefixer": "^10.4.14",
     "file-loader": "^6.2.0",
     "logger": "*",
+    "models": "*",
     "next": "latest",
     "next-transpile-modules": "^10.0.0",
     "postcss": "^8.4.23",
@@ -27,11 +28,11 @@
     "styled-components": "^6.0.0-rc.1",
     "tailwindcss": "^3.3.2",
     "three": "^0.152.2",
+    "three-addons": "^1.2.0",
     "three-stdlib": "^2.21.11",
     "ts-pattern": "^4.3.0",
     "ui": "*",
-    "zod": "^3.21.4",
-    "models": "*"
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",

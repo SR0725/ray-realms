@@ -4,9 +4,9 @@ import callOnInterval from "@utils/callOnInterval";
 const PysicalIntervalTime = 1000 / 20;
 const players = new Map<string, Player>();
 
-const onUpdate = (player: Map<string, Player>) => {
-  console.log("player", player);
-  io.emit("player:update", player);
+const onUpdate = (players: Map<string, Player>) => {
+  const playersList = Array.from(players).map((player) => player[1]);
+  io.emit("player:update", playersList);
 };
 
 callOnInterval(onUpdate, players, PysicalIntervalTime);
@@ -18,15 +18,12 @@ const playerService = {
   leave(playerId: string) {
     players.delete(playerId);
   },
-  setTransform(
-    playerId: string,
-    position: [number, number, number],
-    rotation: [number, number, number]
-  ) {
-    const player = players.get(playerId);
+  updateState(data: Player) {
+    const player = players.get(data.id);
     if (!player) return;
-    player.position = position;
-    player.rotation = rotation;
+    player.position = data.position;
+    player.rotation = data.rotation;
+    player.playAnimation = data.playAnimation;
   },
 };
 

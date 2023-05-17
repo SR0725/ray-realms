@@ -3,16 +3,19 @@ import playerService from "@services/playerService";
 import { Player, playerSchema } from "models";
 import isValid from "@/utils/isValid";
 
-const playerJoin = (socket: Socket, data: Player) => {
-  playerService.join(data);
-};
-
 const registerPlayerHandlers = (socket: Socket) => {
-  socket.on("player:join", (data) => {
+  socket.on("player:join", (data: Player) => {
     if (!isValid(data, playerSchema)) {
       socket.emit("error", `Invalid data format for player:join`);
     } else {
-      playerJoin(socket, data);
+      playerService.join(data);
+    }
+  });
+  socket.on("player:updateState", (data: Player) => {
+    if (!isValid(data, playerSchema)) {
+      socket.emit("error", `Invalid data format for player:join`);
+    } else {
+      playerService.updateState(data);
     }
   });
 
