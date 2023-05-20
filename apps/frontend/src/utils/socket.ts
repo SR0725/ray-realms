@@ -5,6 +5,6 @@ const URL =
   process.env.NEXT_PUBLIC_ENV === "DEV" ||
   process.env.NEXT_PUBLIC_ENV === "LOCAL"
     ? `http://localhost:${process.env.NEXT_PUBLIC_BACKEND_PORT}`
-    : "http://localhost:6000";
+    : `https://ray-realms.com:${process.env.NEXT_PUBLIC_BACKEND_PORT}`;
 
 export const socket = io(URL);
