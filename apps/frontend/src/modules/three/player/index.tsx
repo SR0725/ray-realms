@@ -36,7 +36,7 @@ const GameObject: FC<Props> = ({ CameraControlRef }) => {
       dailySessionId: localParticipant?.session_id ?? null,
     };
     socket.emit("player:join", newPlayer);
-  }, []);
+  }, [localParticipant?.session_id, playAnimation, position, rotation]);
 
   useFrame(() => {
     const newPlayer: Player = {

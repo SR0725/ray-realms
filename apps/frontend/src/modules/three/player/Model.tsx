@@ -43,7 +43,7 @@ export function Model(props: Props) {
       actions[playAnimation]?.play();
       setLastAction(playAnimation);
     }
-  }, [playAnimation, mixer]);
+  }, [playAnimation, mixer, actions, lastAction]);
 
   return (
     <group ref={group} {...props} dispose={null}>
