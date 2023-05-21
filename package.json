@@ -6,7 +6,8 @@
     "dev": "yarn dotenv -e .env turbo run dev --no-cache  --continue",
     "format": "yarn dotenv -e .env prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "yarn dotenv -e .env turbo run lint",
-    "test": "yarn dotenv -e .env turbo run test"
+    "test": "yarn dotenv -e .env turbo run test",
+    "start": "yarn dotenv -e .env turbo run start"
   },
   "devDependencies": {
     "prettier": "^2.7.1",

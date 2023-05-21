@@ -7,6 +7,7 @@ import { Player } from "models";
 import useCamaeraControl from "./hooks/useCamaeraControl";
 import useControl from "./hooks/useControl";
 import useAnimation from "./hooks/useAnimation";
+import { useLocalParticipant } from "@daily-co/daily-react";
 
 type Props = {
   CameraControlRef: MutableRefObject<CameraControls | null>;
@@ -14,6 +15,7 @@ type Props = {
 
 const GameObject: FC<Props> = ({ CameraControlRef }) => {
   const { motion, position, rotation, scale, playAnimation } = useControl();
+  const localParticipant = useLocalParticipant();
 
   const {
     scale: startingScale,
@@ -31,6 +33,7 @@ const GameObject: FC<Props> = ({ CameraControlRef }) => {
       position: position as [number, number, number],
       rotation: rotation as [number, number, number],
       playAnimation: playAnimation as ActionName,
+      dailySessionId: localParticipant?.session_id ?? null,
     };
     socket.emit("player:join", newPlayer);
   }, []);
@@ -42,6 +45,7 @@ const GameObject: FC<Props> = ({ CameraControlRef }) => {
       position: position as [number, number, number],
       rotation: rotation as [number, number, number],
       playAnimation: playAnimation as ActionName,
+      dailySessionId: localParticipant?.session_id ?? null,
     };
     socket.emit("player:updateState", newPlayer);
   });

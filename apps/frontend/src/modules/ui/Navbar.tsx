@@ -135,7 +135,6 @@ const StartedMenu: FC = () => {
 
 const ComplexNavbar: FC = () => {
   const isJoined = useRecoilValue(joinState);
-  console.log("ComplexNavbarisJoined", isJoined);
 
   return (
     <div className="fixed bottom-4 left-0 w-full">

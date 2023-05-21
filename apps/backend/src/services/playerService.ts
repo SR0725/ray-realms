@@ -24,6 +24,7 @@ const playerService = {
     player.position = data.position;
     player.rotation = data.rotation;
     player.playAnimation = data.playAnimation;
+    player.dailySessionId = data.dailySessionId;
   },
 };
 

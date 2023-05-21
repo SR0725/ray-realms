@@ -6,7 +6,6 @@ import {
   useDailyEvent,
   DailyAudio,
 } from "@daily-co/daily-react";
-
 import Tile from "../Tile/Tile";
 import UserMediaError from "../UserMediaError/UserMediaError";
 
@@ -31,6 +30,14 @@ export default function Call() {
 
   const renderCallScreen = () => (
     <div className={`fixed right-2 top-2 flex gap-4`}>
+      <div className="hidden">
+        {remoteParticipantIds.map((id) => (
+          <Tile key={id} id={id} />
+        ))}
+      </div>
+      {screens.map((screen) => (
+        <Tile key={screen.screenId} id={screen.session_id} isScreenShare />
+      ))}
       {/* Your self view */}
       {localParticipant && (
         <Tile
@@ -40,12 +47,6 @@ export default function Call() {
           isAlone={isAlone}
         />
       )}
-      {remoteParticipantIds.map((id) => (
-        <Tile key={id} id={id} />
-      ))}
-      {screens.map((screen) => (
-        <Tile key={screen.screenId} id={screen.session_id} isScreenShare />
-      ))}
       <DailyAudio />
     </div>
   );

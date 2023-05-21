@@ -5,6 +5,7 @@ export type Player = {
   position: [number, number, number];
   rotation: [number, number, number];
   playAnimation: string;
+  dailySessionId: string | null;
 };
 
 export const playerSchema = z.object({
@@ -12,5 +13,5 @@ export const playerSchema = z.object({
   name: z.string(),
   position: z.array(z.number()),
   rotation: z.array(z.number()),
-  playAnimation: z.string(),
+  playAnimation: z.nullable(z.string()),
 });

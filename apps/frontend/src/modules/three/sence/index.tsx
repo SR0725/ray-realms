@@ -51,14 +51,18 @@ const Sence = () => {
       <WallBlock />
       <Player CameraControlRef={cameraControlRef} />
 
-      {otherPlayers.map(({ id, position, rotation, playAnimation }) => (
-        <OtherPlayer
-          key={id}
-          position={position}
-          rotation={rotation}
-          playAnimation={playAnimation}
-        />
-      ))}
+      {otherPlayers.map(
+        ({ id, position, rotation, playAnimation, dailySessionId }) => (
+          <OtherPlayer
+            key={id}
+            position={position}
+            rotation={rotation}
+            playAnimation={playAnimation}
+            dailySessionId={dailySessionId}
+            CameraControlRef={cameraControlRef}
+          />
+        )
+      )}
     </Canvas>
   );
 };

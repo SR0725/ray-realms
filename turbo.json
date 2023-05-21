@@ -34,6 +34,10 @@
     },
     "clean": {
       "cache": false
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false
     }
   }
 }
